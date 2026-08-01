@@ -16,7 +16,7 @@ $(function () {
         }
     });
 
-    $.get('http://127.0.0.1:5000/getDashboardSummary', function (summary) {
+    $.get(backendBaseUrl + '/getDashboardSummary', function (summary) {
         if (summary) {
             $('#stat-orders').text(summary.order_count || 0);
             $('#stat-products').text(summary.product_count || 0);

@@ -1,10 +1,14 @@
 // Define your api here
-var productListApiUrl = 'http://127.0.0.1:5000/getProducts';
-var uomListApiUrl = 'http://127.0.0.1:5000/getUOM';
-var productSaveApiUrl = 'http://127.0.0.1:5000/insertProduct';
-var productDeleteApiUrl = 'http://127.0.0.1:5000/deleteProduct';
-var orderListApiUrl = 'http://127.0.0.1:5000/getAllOrders';
-var orderSaveApiUrl = 'http://127.0.0.1:5000/insertOrder';
+var backendBaseUrl = window.location.hostname === 'localhost'
+    ? 'http://127.0.0.1:5000'
+    : '/api';
+
+var productListApiUrl = backendBaseUrl + '/getProducts';
+var uomListApiUrl = backendBaseUrl + '/getUOM';
+var productSaveApiUrl = backendBaseUrl + '/insertProduct';
+var productDeleteApiUrl = backendBaseUrl + '/deleteProduct';
+var orderListApiUrl = backendBaseUrl + '/getAllOrders';
+var orderSaveApiUrl = backendBaseUrl + '/insertOrder';
 
 // For product drop in order
 var productsApiUrl = 'https://fakestoreapi.com/products';

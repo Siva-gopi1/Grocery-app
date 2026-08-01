@@ -11,6 +11,14 @@ app = Flask(__name__)
 
 connection = get_sql_connection()
 
+
+@app.after_request
+def add_cors_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    return response
+
 @app.route('/getUOM', methods=['GET'])
 def get_uom():
     response = uom_dao.get_uoms(connection)
@@ -69,6 +77,10 @@ def delete_product():
     return response
 
 if __name__ == "__main__":
+    import os
+
     print("Starting Python Flask Server For Grocery Store Management System")
-    app.run(port=5000)
+    host = os.getenv('HOST', '0.0.0.0')
+    port = int(os.getenv('PORT', '5000'))
+    app.run(host=host, port=port)
 
